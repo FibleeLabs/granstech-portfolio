@@ -32,15 +32,16 @@
       --border-subtle: #eae5da;
       
       --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
       
-      --shadow-sm: 0 2px 4px rgba(23, 20, 15, 0.04);
-      --shadow-md: 0 6px 18px rgba(23, 20, 15, 0.08);
-      --shadow-lg: 0 12px 32px rgba(230, 74, 25, 0.12);
+      --shadow-sm: 0 2px 8px rgba(23, 20, 15, 0.05);
+      --shadow-md: 0 8px 24px rgba(23, 20, 15, 0.09);
+      --shadow-lg: 0 16px 40px rgba(230, 74, 25, 0.14);
+      --shadow-card: 0 4px 12px rgba(23, 20, 15, 0.06);
       
       --max-width: 1280px;
-      --transition: 0.2s ease-in-out;
+      --transition: 0.22s ease-in-out;
     }
 
     * {
@@ -55,11 +56,12 @@
       background-color: var(--bg-body);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
       min-height: 100vh;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* Selection */
@@ -69,112 +71,96 @@
     }
 
     /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-warm);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--brand-orange);
-    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-warm); }
+    ::-webkit-scrollbar-thumb { background: #c8c3b8; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--brand-orange); }
 
-    /* Headings - Oswald uppercase condensed style */
+    /* Headings */
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Oswald', sans-serif;
       text-transform: uppercase;
       font-weight: 700;
       color: var(--text-main);
-      letter-spacing: 0.02em;
-      line-height: 1.15;
+      letter-spacing: 0.025em;
+      line-height: 1.12;
     }
 
-    .font-mono {
-      font-family: 'IBM Plex Mono', monospace;
-    }
+    .font-mono { font-family: 'IBM Plex Mono', monospace; }
 
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 40px;
     }
 
     .section {
-      padding: 90px 0;
+      padding: 100px 0;
       position: relative;
     }
 
-    .section-tight {
-      padding: 60px 0;
-    }
+    .section-tight { padding: 64px 0; }
 
-    .bg-warm {
-      background-color: var(--bg-warm);
-    }
+    .bg-warm { background-color: var(--bg-warm); }
+    .bg-subtle { background-color: var(--bg-subtle); }
 
-    .bg-subtle {
-      background-color: var(--bg-subtle);
-    }
-
-    /* Eyebrow Label with prefix dash line */
+    /* ── Eyebrow ───────────────────────────────── */
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       color: var(--brand-orange);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
-
     .eyebrow::before {
       content: '';
-      width: 24px;
+      width: 28px;
       height: 2px;
       background: var(--brand-orange);
+      border-radius: 2px;
     }
 
-    /* ---------------- NAVIGATION ---------------- */
+    /* ── NAVIGATION ────────────────────────────── */
     header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-color);
-      transition: var(--transition);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     header.scrolled {
-      box-shadow: 0 4px 16px rgba(23, 20, 15, 0.06);
+      box-shadow: 0 4px 20px rgba(23, 20, 15, 0.07);
+      border-bottom-color: var(--border-subtle);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 76px;
+      height: 78px;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
     }
 
     .brand-icon {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       background: var(--brand-orange);
       border-radius: var(--radius-sm);
       display: flex;
@@ -183,38 +169,41 @@
       color: #ffffff;
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
+    .brand-logo:hover .brand-icon {
+      transform: scale(1.05);
     }
+
+    .brand-text { display: flex; flex-direction: column; }
 
     .brand-name {
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--text-main);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
+      line-height: 1.1;
     }
-    .brand-name span {
-      color: var(--brand-orange);
-    }
+    .brand-name span { color: var(--brand-orange); }
 
     .brand-tag {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       color: var(--text-light);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      margin-top: 2px;
     }
 
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 4px;
       list-style: none;
     }
 
@@ -222,34 +211,22 @@
       color: var(--text-muted);
       text-decoration: none;
       font-family: 'Oswald', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       font-weight: 600;
-      transition: var(--transition);
-      padding: 4px 0;
+      transition: color var(--transition);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
       position: relative;
     }
 
     .nav-link:hover, .nav-link.active {
       color: var(--brand-orange);
+      background: var(--brand-orange-light);
     }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: var(--brand-orange);
-      transition: var(--transition);
-    }
-
-    .nav-link:hover::after, .nav-link.active::after {
-      width: 100%;
-    }
-
+    /* ── BUTTONS ────────────────────────────────── */
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -259,53 +236,53 @@
       color: #ffffff;
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 12px 24px;
+      letter-spacing: 0.07em;
+      padding: 13px 26px;
       border-radius: var(--radius-sm);
       text-decoration: none;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(230, 74, 25, 0.2);
-      transition: var(--transition);
+      box-shadow: 0 4px 14px rgba(230, 74, 25, 0.22);
+      transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
     }
-
     .btn-primary:hover {
       background: var(--brand-orange-hover);
-      box-shadow: 0 6px 18px rgba(230, 74, 25, 0.3);
+      box-shadow: 0 6px 20px rgba(230, 74, 25, 0.32);
+      transform: translateY(-1px);
     }
+    .btn-primary:active { transform: translateY(0); }
 
     .btn-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background: #ffffff;
+      background: transparent;
       color: var(--text-main);
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 12px 24px;
+      letter-spacing: 0.07em;
+      padding: 12px 26px;
       border-radius: var(--radius-sm);
       text-decoration: none;
-      border: 1.5px solid var(--text-main);
+      border: 1.5px solid var(--border-color);
       cursor: pointer;
-      transition: var(--transition);
+      transition: all var(--transition);
     }
-
     .btn-secondary:hover {
       border-color: var(--brand-orange);
       color: var(--brand-orange);
       background: var(--brand-orange-light);
     }
 
-    /* ---------------- HERO SECTION ---------------- */
+    /* ── HERO SECTION ───────────────────────────── */
     .hero-section {
-      padding-top: 140px;
-      padding-bottom: 70px;
+      padding-top: 148px;
+      padding-bottom: 80px;
       background: var(--bg-body);
       border-bottom: 1px solid var(--border-color);
     }
@@ -313,231 +290,224 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
+      gap: 56px;
       align-items: center;
     }
 
     .hero-title {
-      font-size: clamp(3rem, 5vw, 4.4rem);
-      margin-bottom: 20px;
+      font-size: clamp(3rem, 5vw, 4.6rem);
+      margin-bottom: 22px;
       color: var(--text-main);
       letter-spacing: 0.01em;
-      line-height: 1.05;
+      line-height: 1.04;
     }
-
-    .hero-title span {
-      color: var(--brand-orange);
-    }
+    .hero-title span { color: var(--brand-orange); }
 
     .hero-subtitle {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
-      margin-bottom: 32px;
-      line-height: 1.65;
+      margin-bottom: 36px;
+      line-height: 1.72;
+      max-width: 520px;
     }
 
     .hero-actions {
       display: flex;
-      gap: 16px;
-      margin-bottom: 40px;
+      gap: 14px;
+      margin-bottom: 44px;
       flex-wrap: wrap;
     }
 
     .spec-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      padding-top: 28px;
+      gap: 14px;
+      padding-top: 32px;
       border-top: 1px solid var(--border-color);
     }
 
     .spec-card {
       background: var(--bg-warm);
       border: 1px solid var(--border-color);
-      padding: 16px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
+      padding: 18px 16px;
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
     }
-
     .spec-card:hover {
       border-color: var(--brand-orange);
+      background: var(--brand-orange-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
     }
 
     .spec-num {
       font-family: 'Oswald', sans-serif;
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--brand-orange);
       line-height: 1;
     }
-
     .spec-num small {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--text-muted);
     }
-
     .spec-lbl {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--text-light);
       text-transform: uppercase;
-      margin-top: 6px;
+      margin-top: 7px;
+      letter-spacing: 0.06em;
     }
 
     .hero-showcase {
       background: #ffffff;
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-md);
-      transition: var(--transition);
+      transition: all 0.3s ease;
     }
-
     .hero-showcase:hover {
       box-shadow: var(--shadow-lg);
       border-color: var(--brand-orange);
+      transform: translateY(-4px);
     }
-
     .hero-showcase-img {
-      height: 310px;
+      height: 320px;
       width: 100%;
       overflow: hidden;
-      background: #000;
+      background: #111;
       position: relative;
     }
-
     .hero-showcase-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: 45% 55%;
-      filter: contrast(1.1) brightness(1.02) saturate(1.05);
-      transition: transform 0.4s ease;
+      filter: contrast(1.08) brightness(1.02) saturate(1.08);
+      transition: transform 0.5s ease;
     }
-
-    .hero-showcase:hover .hero-showcase-img img {
-      transform: scale(1.04);
-    }
-
+    .hero-showcase:hover .hero-showcase-img img { transform: scale(1.05); }
     .hero-showcase-body {
-      padding: 24px 28px;
+      padding: 26px 30px;
       background: #ffffff;
+      border-top: 1px solid var(--border-color);
     }
 
-    /* ---------------- INTERACTIVE METRICS DASHBOARD ---------------- */
+    /* ── INTERACTIVE METRICS DASHBOARD ─────────── */
     .dash-section {
       background: var(--bg-warm);
       border-bottom: 1px solid var(--border-color);
-      padding: 48px 0;
+      padding: 56px 0;
     }
-
     .dash-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       flex-wrap: wrap;
       gap: 16px;
     }
-
-    .dash-title {
-      font-size: 1.6rem;
-    }
-
-    .dash-tabs {
-      display: flex;
-      gap: 8px;
-    }
-
+    .dash-title { font-size: 1.7rem; }
+    .dash-tabs { display: flex; gap: 8px; }
     .dash-tab-btn {
       background: #ffffff;
       border: 1px solid var(--border-color);
-      padding: 8px 18px;
+      padding: 8px 20px;
       border-radius: var(--radius-sm);
       font-family: 'Oswald', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       text-transform: uppercase;
+      letter-spacing: 0.04em;
       color: var(--text-muted);
       cursor: pointer;
-      transition: var(--transition);
+      transition: all var(--transition);
     }
-
     .dash-tab-btn.active, .dash-tab-btn:hover {
       background: var(--brand-orange);
       color: #ffffff;
       border-color: var(--brand-orange);
+      box-shadow: 0 3px 10px rgba(230, 74, 25, 0.2);
     }
-
     .dash-kpi-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
-
     .dash-kpi-card {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-top: 3px solid var(--brand-orange);
-      border-radius: var(--radius-sm);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
+      border-radius: var(--radius-md);
+      padding: 26px 24px;
+      box-shadow: var(--shadow-card);
+      transition: all var(--transition);
     }
-
     .dash-kpi-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       box-shadow: var(--shadow-md);
+      border-color: var(--brand-orange-border);
     }
-
     .dash-kpi-val {
       font-family: 'Oswald', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       color: var(--brand-orange);
       line-height: 1;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
-
     .dash-kpi-name {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       color: var(--text-main);
       text-transform: uppercase;
-      margin-bottom: 8px;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
     }
-
     .dash-kpi-sub {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
-    /* ---------------- PREFACE / CAPABILITIES ---------------- */
+    /* ── PREFACE / CAPABILITIES ─────────────────── */
     .cap-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
-      margin-top: 40px;
+      margin-top: 44px;
     }
-
     .cap-card {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 32px;
-      transition: var(--transition);
+      padding: 36px 32px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
     }
-
+    .cap-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--brand-orange);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+    .cap-card:hover::before { transform: scaleX(1); }
     .cap-card:hover {
-      border-color: var(--brand-orange);
-      box-shadow: var(--shadow-sm);
+      border-color: var(--brand-orange-border);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
     }
-
     .cap-icon-box {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       background: var(--brand-orange-light);
       border: 1px solid var(--brand-orange-border);
       border-radius: var(--radius-sm);
@@ -545,78 +515,63 @@
       align-items: center;
       justify-content: center;
       color: var(--brand-orange);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
+    .cap-title { font-size: 1.35rem; margin-bottom: 10px; }
+    .cap-text { font-size: 0.94rem; color: var(--text-muted); line-height: 1.65; }
 
-    .cap-title {
-      font-size: 1.35rem;
-      margin-bottom: 8px;
-    }
-
-    .cap-text {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ---------------- METALLURGY ---------------- */
+    /* ── METALLURGY ─────────────────────────────── */
     .grade-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-top: 32px;
+      gap: 14px;
+      margin-top: 36px;
     }
-
     .grade-card {
       background: #ffffff;
       border: 1.5px solid var(--text-main);
       border-radius: var(--radius-sm);
-      padding: 20px;
+      padding: 22px 18px;
       text-align: center;
-      transition: var(--transition);
+      transition: all var(--transition);
       cursor: pointer;
     }
-
     .grade-card:hover, .grade-card.active {
       border-color: var(--brand-orange);
       background: var(--text-main);
       color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
-
-    .grade-card:hover .grade-name, .grade-card.active .grade-name {
-      color: #ffffff;
-    }
-
+    .grade-card:hover .grade-name, .grade-card.active .grade-name { color: #ffffff; }
     .grade-name {
       font-family: 'Oswald', sans-serif;
       font-weight: 600;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       text-transform: uppercase;
       color: var(--text-main);
     }
 
-    /* ---------------- CERTIFICATIONS ---------------- */
+    /* ── CERTIFICATIONS ─────────────────────────── */
     .cert-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 32px;
-      margin-top: 40px;
+      gap: 28px;
+      margin-top: 44px;
     }
-
     .cert-box {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 36px;
+      padding: 40px;
+      box-shadow: var(--shadow-card);
     }
-
     .cert-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 24px;
+      gap: 14px;
+      margin-top: 28px;
     }
-
     .cert-item {
       display: flex;
       align-items: center;
@@ -626,13 +581,17 @@
       padding: 14px 18px;
       border-radius: var(--radius-sm);
       font-family: 'Oswald', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       text-transform: uppercase;
+      transition: all var(--transition);
     }
-
+    .cert-item:hover {
+      border-color: var(--brand-orange);
+      background: var(--brand-orange-light);
+    }
     .cert-badge {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       background: var(--brand-orange);
       color: #ffffff;
       border-radius: 50%;
@@ -642,85 +601,74 @@
       font-size: 0.75rem;
       flex-shrink: 0;
     }
-
     .roadmap-box {
       background: var(--text-main);
       color: #ffffff;
       border-radius: var(--radius-md);
-      padding: 36px;
+      padding: 40px;
     }
-
-    .roadmap-box h3 {
-      color: #ffffff;
-    }
-
+    .roadmap-box h3 { color: #ffffff; }
     .roadmap-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-top: 20px;
+      gap: 14px;
+      margin-top: 22px;
     }
-
     .roadmap-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 0.95rem;
-      color: #d8d2c6;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      gap: 14px;
+      font-size: 0.94rem;
+      color: #cbc5b7;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-
-    .roadmap-item:last-child {
-      border-bottom: none;
-    }
-
+    .roadmap-item:last-child { border-bottom: none; padding-bottom: 0; }
     .roadmap-bullet {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: var(--brand-orange);
+      flex-shrink: 0;
     }
 
-    /* ---------------- COMPACT GRID FOR FOUNDRY PROCESS FLOOR ---------------- */
+    /* ── COMPACT GRID / FOUNDRY PROCESS ─────────── */
     .proc-compact-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 40px;
+      margin-top: 44px;
     }
-
     .proc-compact-card {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
+      box-shadow: var(--shadow-card);
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
     }
-
     .proc-compact-card:hover {
       border-color: var(--brand-orange);
       box-shadow: var(--shadow-md);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
     }
-
     .proc-compact-img {
-      height: 190px;
+      height: 195px;
       width: 100%;
       overflow: hidden;
       background: #f1f5f9;
+      position: relative;
     }
-
     .proc-compact-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
     }
-
+    .proc-compact-card:hover .proc-compact-img img { transform: scale(1.04); }
     .proc-compact-body {
       padding: 24px;
       flex: 1;
@@ -728,80 +676,77 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
     .proc-compact-tag {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--brand-orange);
       font-weight: 600;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
     }
-
-    .proc-compact-title {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-
+    .proc-compact-title { font-size: 1.25rem; margin-bottom: 10px; }
     .proc-compact-desc {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.55;
-      margin-bottom: 14px;
+      line-height: 1.58;
+      margin-bottom: 16px;
     }
-
     .proc-compact-bullets {
       list-style: none;
       border-top: 1px solid var(--border-color);
-      padding-top: 12px;
+      padding-top: 14px;
     }
-
     .proc-compact-bullets li {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--text-main);
       display: flex;
       align-items: center;
-      gap: 6px;
-      margin-bottom: 4px;
+      gap: 8px;
+      margin-bottom: 5px;
     }
-
     .proc-compact-bullets li::before {
-      content: '•';
+      content: '▸';
       color: var(--brand-orange);
-      font-weight: 700;
+      font-size: 0.7rem;
     }
 
-    /* 28-Step Flow Stepper */
+    /* ── PROCESS FLOWCHART ──────────────────────── */
     .flow-stepper {
       display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding: 16px 0;
-      margin-top: 24px;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 28px;
     }
-
-    .flow-pill {
-      flex: 0 0 auto;
-      width: 220px;
+    .flow-node {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      padding: 16px;
-      transition: var(--transition);
+      padding: 13px 22px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      box-shadow: var(--shadow-card);
+      transition: all var(--transition);
     }
-
-    .flow-pill:hover {
+    .flow-node:hover {
       border-color: var(--brand-orange);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
       background: var(--brand-orange-light);
     }
-
+    .flow-arrow {
+      color: var(--brand-orange);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
     .flow-num {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--brand-orange);
       font-weight: 700;
     }
-
     .flow-name {
       font-family: 'Oswald', sans-serif;
       font-size: 1rem;
@@ -810,244 +755,292 @@
       margin-top: 4px;
     }
 
-    /* ---------------- QUALITY LABS & NDE CARDS ---------------- */
+    /* ── QUALITY LABS & NDE CARDS ───────────────── */
     .qual-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
-      margin-top: 40px;
+      margin-top: 44px;
     }
-
     .qual-card {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 24px;
-      transition: var(--transition);
+      padding: 0;
+      transition: all var(--transition);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
     }
-
     .qual-card:hover {
       border-color: var(--brand-orange);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
     }
-
     .qual-card-img {
-      height: 200px;
+      height: 210px;
       width: 100%;
-      border-radius: var(--radius-sm);
       overflow: hidden;
-      margin-bottom: 18px;
       background: #f1f5f9;
+      position: relative;
     }
-
     .qual-card-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
     }
-
-    .qual-card-title {
-      font-size: 1.25rem;
-      margin-bottom: 6px;
+    .qual-card:hover .qual-card-img img { transform: scale(1.04); }
+    .qual-card > div:last-child {
+      padding: 22px 24px;
     }
-
+    .qual-card-title { font-size: 1.2rem; margin-bottom: 6px; }
     .qual-card-code {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--brand-orange);
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
-
     .qual-card-desc {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.58;
     }
 
-    /* ---------------- CUSTOMER APPRECIATION & AWARDS ---------------- */
+    /* ── SECTOR CLIENTS MARQUEE ─────────────────── */
+    .sector-marquee-container {
+      background: #ffffff;
+      padding: 48px 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .sector-marquee-row {
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 16px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .sector-marquee-row:hover { border-color: var(--brand-orange-border); }
+    .sector-marquee-row:last-child { margin-bottom: 0; }
+    .sector-marquee-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      background: var(--bg-warm);
+      padding: 20px 28px;
+      width: 190px;
+      flex-shrink: 0;
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .sector-marquee-track {
+      display: flex;
+      flex-grow: 1;
+      overflow: hidden;
+      position: relative;
+    }
+    .sector-marquee-content {
+      display: flex;
+      gap: 80px;
+      align-items: center;
+      padding-left: 40px;
+      animation: marquee 20s linear infinite;
+      min-width: max-content;
+    }
+    .sector-marquee-content img {
+      height: 44px;
+      object-fit: contain;
+      filter: grayscale(100%) opacity(0.75);
+      transition: filter 0.3s ease;
+    }
+    .sector-marquee-content img:hover { filter: grayscale(0%) opacity(1); }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── CUSTOMER APPRECIATION ──────────────────── */
     .awards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
+      gap: 28px;
+      margin-top: 44px;
     }
-
     .award-card {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
+      box-shadow: var(--shadow-card);
+      transition: all var(--transition);
+      opacity: 0;
+      transform: translateY(32px);
+      animation: fadeInUp 0.7s ease-out forwards;
+    }
+    .award-card:nth-child(1) { animation-delay: 0.1s; }
+    .award-card:nth-child(2) { animation-delay: 0.28s; }
+    .award-card:nth-child(3) { animation-delay: 0.46s; }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .award-card:hover {
       border-color: var(--brand-orange);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
     }
-
     .award-img {
-      height: 320px;
+      height: 300px;
       width: 100%;
       background: #f8fafc;
       overflow: hidden;
-      padding: 12px;
+      padding: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid var(--border-color);
     }
-
     .award-img img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+      transition: transform 0.4s ease;
     }
-
-    .award-body {
-      padding: 20px;
-    }
-
+    .award-card:hover .award-img img { transform: scale(1.02); }
+    .award-body { padding: 22px 24px; }
     .award-client {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--brand-orange);
       font-weight: 600;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
     }
+    .award-title { font-size: 1.15rem; margin-bottom: 9px; }
+    .award-desc { font-size: 0.86rem; color: var(--text-muted); line-height: 1.55; }
 
-    .award-title {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-    }
-
-    .award-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* ---------------- PRODUCT GALLERY ---------------- */
+    /* ── PRODUCT GALLERY ────────────────────────── */
     .filter-bar {
       display: flex;
-      gap: 12px;
-      margin-top: 32px;
-      margin-bottom: 40px;
+      gap: 10px;
+      margin-top: 36px;
+      margin-bottom: 44px;
       flex-wrap: wrap;
     }
-
     .filter-btn {
       background: #ffffff;
       border: 1px solid var(--border-color);
       color: var(--text-muted);
       font-family: 'Oswald', sans-serif;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.92rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 8px 22px;
+      letter-spacing: 0.05em;
+      padding: 9px 24px;
       border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: var(--transition);
+      transition: all var(--transition);
     }
-
     .filter-btn:hover, .filter-btn.active {
       background: var(--brand-orange);
       color: #ffffff;
       border-color: var(--brand-orange);
+      box-shadow: 0 4px 12px rgba(230, 74, 25, 0.2);
     }
-
     .prod-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
+      gap: 22px;
     }
-
     .prod-card {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: var(--transition);
+      transition: all var(--transition);
+      box-shadow: var(--shadow-card);
     }
-
     .prod-card:hover {
       border-color: var(--brand-orange);
       box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
     }
-
     .prod-img {
       height: 220px;
       width: 100%;
-      background: #ffffff;
+      background: var(--bg-warm);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 12px;
+      padding: 14px;
     }
-
     .prod-img img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      transition: var(--transition);
+      transition: transform 0.4s ease;
     }
-
-    .prod-card:hover .prod-img img {
-      transform: scale(1.06);
-    }
-
+    .prod-card:hover .prod-img img { transform: scale(1.08); }
     .prod-info {
-      padding: 18px;
+      padding: 18px 20px;
       border-top: 1px solid var(--border-color);
     }
-
     .prod-cat {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--brand-orange);
       text-transform: uppercase;
       font-weight: 600;
+      letter-spacing: 0.08em;
       margin-bottom: 4px;
     }
+    .prod-title { font-size: 1.1rem; }
 
-    .prod-title {
-      font-size: 1.15rem;
-    }
-
-    /* ---------------- SECTOR & STATS ---------------- */
+    /* ── SECTOR & STATS ─────────────────────────── */
     .sector-wrap {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 52px;
       align-items: center;
       background: #ffffff;
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 44px;
-      margin-top: 40px;
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      margin-top: 44px;
+      box-shadow: var(--shadow-card);
     }
-
     .sector-chart {
       display: flex;
       justify-content: center;
       align-items: center;
     }
-
     .sector-legend {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      margin-top: 20px;
+      gap: 12px;
+      margin-top: 22px;
     }
-
     .legend-row {
       display: flex;
       align-items: center;
@@ -1056,37 +1049,26 @@
       border: 1px solid var(--border-color);
       padding: 12px 18px;
       border-radius: var(--radius-sm);
+      transition: border-color var(--transition);
     }
-
+    .legend-row:hover { border-color: var(--brand-orange-border); }
     .legend-label {
       display: flex;
       align-items: center;
       gap: 10px;
       font-family: 'Oswald', sans-serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       text-transform: uppercase;
     }
-
-    .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
     .legend-val {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 700;
       color: var(--brand-orange);
     }
 
-    /* Track Record Bars */
-    .bars-wrap {
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
+    /* Track Record / Bars (kept as fallback) */
+    .bars-wrap { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
     .bar-row {
       display: grid;
       grid-template-columns: 180px 1fr 80px;
@@ -1097,43 +1079,21 @@
       padding: 14px 20px;
       border-radius: var(--radius-sm);
     }
+    .bar-lbl { font-family: 'Oswald', sans-serif; font-size: 1rem; text-transform: uppercase; }
+    .bar-track { height: 7px; background: #e8e3da; border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--brand-orange); border-radius: 4px; }
+    .bar-val { font-family: 'IBM Plex Mono', monospace; font-weight: 700; color: var(--brand-orange); text-align: right; }
 
-    .bar-lbl {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.05rem;
-      text-transform: uppercase;
-    }
-
-    .bar-track {
-      height: 8px;
-      background: #e2e8f0;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .bar-fill {
-      height: 100%;
-      background: var(--brand-orange);
-      border-radius: 4px;
-    }
-
-    .bar-val {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 700;
-      color: var(--brand-orange);
-      text-align: right;
-    }
-
-    /* ---------------- PARTNERS & CLIENT LOGOS ---------------- */
+    /* ── PARTNERS & CLIENT LOGOS ─────────────────── */
     .partner-banner {
-      margin-top: 40px;
+      margin-top: 44px;
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 36px;
+      padding: 40px;
       text-align: center;
+      box-shadow: var(--shadow-card);
     }
-
     .partner-banner-img {
       max-width: 100%;
       height: auto;
@@ -1141,127 +1101,108 @@
       display: block;
     }
 
-    /* ---------------- FOOTER ---------------- */
+    /* ── FOOTER ──────────────────────────────────── */
     footer {
       background: var(--text-main);
       color: #ffffff;
-      padding: 80px 0 40px;
+      padding: 90px 0 44px;
     }
-
     .footer-grid {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 60px;
-      margin-bottom: 60px;
+      gap: 64px;
+      margin-bottom: 64px;
     }
-
     .footer-brand-text {
-      color: #b7af9f;
-      margin-top: 16px;
-      max-width: 400px;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      color: #b0a898;
+      margin-top: 18px;
+      max-width: 380px;
+      font-size: 0.94rem;
+      line-height: 1.65;
     }
-
     .footer-title {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--brand-orange);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 20px;
+      letter-spacing: 0.12em;
+      margin-bottom: 22px;
     }
-
     .footer-links {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 11px;
     }
-
     .footer-links a {
-      color: #d8d2c6;
+      color: #cec8be;
       text-decoration: none;
-      font-size: 0.95rem;
-      transition: var(--transition);
+      font-size: 0.93rem;
+      transition: color var(--transition);
     }
-
-    .footer-links a:hover {
-      color: var(--brand-orange);
-    }
-
+    .footer-links a:hover { color: var(--brand-orange); }
+    .footer-links li { font-size: 0.93rem; color: #cec8be; }
     .footer-bottom {
-      padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.78rem;
-      color: #7a7466;
+      font-size: 0.76rem;
+      color: #6a6459;
     }
 
-    /* ---------------- MODAL ---------------- */
+    /* ── MODAL ──────────────────────────────────── */
     .modal-overlay {
       position: fixed;
       inset: 0;
       z-index: 2000;
-      background: rgba(23, 20, 15, 0.6);
-      backdrop-filter: blur(8px);
+      background: rgba(23, 20, 15, 0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
       opacity: 0;
       pointer-events: none;
-      transition: var(--transition);
+      transition: opacity 0.25s ease;
     }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
     .modal-container {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       max-width: 560px;
       width: 100%;
-      padding: 36px;
+      padding: 40px;
       position: relative;
-      transform: translateY(16px);
-      transition: var(--transition);
-      box-shadow: var(--shadow-md);
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      box-shadow: 0 20px 60px rgba(23, 20, 15, 0.16);
     }
-
-    .modal-overlay.active .modal-container {
-      transform: translateY(0);
-    }
-
+    .modal-overlay.active .modal-container { transform: translateY(0); }
     .modal-close {
       position: absolute;
-      top: 20px;
+      top: 18px;
       right: 20px;
       background: none;
       border: none;
       color: var(--text-light);
       font-size: 1.4rem;
       cursor: pointer;
+      transition: color var(--transition);
     }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
+    .modal-close:hover { color: var(--brand-orange); }
+    .form-group { margin-bottom: 20px; }
     .form-label {
       display: block;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 600;
       margin-bottom: 8px;
       color: var(--text-main);
     }
-
     .form-input, .form-select, .form-textarea {
       width: 100%;
       background: var(--bg-subtle);
@@ -1270,41 +1211,35 @@
       padding: 12px 16px;
       border-radius: var(--radius-sm);
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
+      transition: border-color var(--transition);
     }
-
     .form-input:focus, .form-select:focus, .form-textarea:focus {
       outline: none;
       border-color: var(--brand-orange);
       background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(230, 74, 25, 0.08);
     }
 
-    /* Responsive */
+    /* ── RESPONSIVE ─────────────────────────────── */
     @media (max-width: 992px) {
+      .container { padding: 0 24px; }
       .hero-grid, .cert-grid, .sector-wrap, .proc-compact-grid, .footer-grid, .awards-grid, .dash-kpi-grid {
         grid-template-columns: 1fr;
       }
-      .nav-menu {
-        display: none;
-      }
-      .spec-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .bar-row {
-        grid-template-columns: 130px 1fr 60px;
-      }
+      .nav-menu { display: none; }
+      .spec-grid { grid-template-columns: repeat(2, 1fr); }
+      .bar-row { grid-template-columns: 130px 1fr 60px; }
+      .hero-section { padding-top: 120px; }
     }
 
     @media (max-width: 600px) {
-      .section {
-        padding: 60px 0;
-      }
-      .spec-grid {
-        grid-template-columns: 1fr;
-      }
-      .cert-list {
-        grid-template-columns: 1fr;
-      }
+      .container { padding: 0 16px; }
+      .section { padding: 64px 0; }
+      .spec-grid { grid-template-columns: 1fr; }
+      .cert-list { grid-template-columns: 1fr; }
+      .track-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-title { font-size: 2.6rem; }
     }
   </style>
 </head>
@@ -1377,7 +1312,7 @@
 
         <div class="hero-showcase">
           <div class="hero-showcase-img">
-            <img src="./images/hero_red_godown.png" alt="GransTech Steel Foundry Plant Facility HD View">
+            <img src="./images/hero_red_godown_enhanced.png" alt="GransTech Steel Foundry Plant Facility HD View">
           </div>
           <div class="hero-showcase-body">
             <div class="font-mono" style="font-size: 0.75rem; color: var(--brand-orange); text-transform: uppercase; margin-bottom: 4px; font-weight: 600;">PLANT FACILITY OVERVIEW</div>
@@ -1699,40 +1634,27 @@
         </div>
       </div>
 
-      <!-- 28-Step Traceability Stepper -->
+      <!-- Traceability Flowchart -->
       <div style="margin-top: 60px;">
         <div class="eyebrow">FULL PROCESS TRACEABILITY</div>
-        <h3 style="font-size: 1.6rem; margin-bottom: 16px;">28-Step PO-to-Ship Sequence</h3>
+        <h3 style="font-size: 1.6rem; margin-bottom: 16px;">End-to-End Process Flow (PO to Dispatch)</h3>
 
         <div class="flow-stepper">
-          <div class="flow-pill"><div class="flow-num">STEP 01</div><div class="flow-name">PO Receipt</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 02</div><div class="flow-name">Technical Review</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 03</div><div class="flow-name">SAP OA/SO/WO Creation</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 04</div><div class="flow-name">Moulding &amp; Core Plan</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 05</div><div class="flow-name">Melting Plan</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 06</div><div class="flow-name">Mould Inspection Log</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 07</div><div class="flow-name">Melting &amp; Pouring</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 08</div><div class="flow-name">Spectro Analysis</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 09</div><div class="flow-name">Process Control Log</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 10</div><div class="flow-name">Knock Out</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 11</div><div class="flow-name">1st Stage Shot Blast</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 12</div><div class="flow-name">Riser &amp; Gate Cutting</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 13</div><div class="flow-name">Heat Treatment</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 14</div><div class="flow-name">Mechanical Testing</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 15</div><div class="flow-name">Fettling &amp; Grinding</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 16</div><div class="flow-name">2nd Stage Shot Blast</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 17</div><div class="flow-name">Visual Examination</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 18</div><div class="flow-name">NDE (DP, MPI, UT, RT)</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 19</div><div class="flow-name">WPS Rework</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 20</div><div class="flow-name">Dimensional Inspection</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 21</div><div class="flow-name">Proof / CNC Machining</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 22</div><div class="flow-name">Final DP Test</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 23</div><div class="flow-name">Final Inspection</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 24</div><div class="flow-name">Doc Review Sign-off</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 25</div><div class="flow-name">PDI &amp; Dispatch Advice</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 26</div><div class="flow-name">Export Packing</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 27</div><div class="flow-name">SAP Invoicing</div></div>
-          <div class="flow-pill"><div class="flow-num">STEP 28</div><div class="flow-name">Ready for Shipment</div></div>
+          <div class="flow-node">PO Receipt &amp; Review</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-node">Planning &amp; Methods</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-node">Moulding &amp; Core</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-node">Melting &amp; Pouring</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-node">Heat Treatment</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-node">Machining &amp; NDE</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-node">Final Inspection</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-node">Dispatch</div>
         </div>
       </div>
     </div>
@@ -1843,6 +1765,42 @@
             <div class="qual-card-code">PROCEDURE WI-47 R0</div>
             <h4 class="qual-card-title">VISUAL INSPECTION OF COMPONENTS</h4>
             <p class="qual-card-desc">100% Visual inspection of all raw and finished machined components by qualified inspector personnel prior to final release.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTOR CLIENTS MARQUEE -->
+  <section class="sector-marquee-container">
+    <div class="container" style="max-width: 1400px; padding: 0;">
+      <!-- Valves -->
+      <div class="sector-marquee-row">
+        <div class="sector-marquee-title">VALVES SECTOR</div>
+        <div class="sector-marquee-track">
+          <div class="sector-marquee-content">
+            <img src="./images/logos_valves.png" alt="Valves Clients">
+            <img src="./images/logos_valves.png" alt="Valves Clients">
+          </div>
+        </div>
+      </div>
+      <!-- Pumps -->
+      <div class="sector-marquee-row">
+        <div class="sector-marquee-title">PUMPS SECTOR</div>
+        <div class="sector-marquee-track">
+          <div class="sector-marquee-content" style="animation-duration: 28s;">
+            <img src="./images/logos_pumps.png" alt="Pumps Clients">
+            <img src="./images/logos_pumps.png" alt="Pumps Clients">
+          </div>
+        </div>
+      </div>
+      <!-- Defense -->
+      <div class="sector-marquee-row">
+        <div class="sector-marquee-title">DEFENSE SECTOR</div>
+        <div class="sector-marquee-track">
+          <div class="sector-marquee-content" style="animation-direction: reverse; animation-duration: 30s;">
+            <img src="./images/logos_defense.png" alt="Defense Clients">
+            <img src="./images/logos_defense.png" alt="Defense Clients">
           </div>
         </div>
       </div>
@@ -2127,7 +2085,7 @@
   <section class="section bg-warm" id="stats">
     <div class="container">
       <div class="eyebrow">MARKET DIVERSIFICATION</div>
-      <h2 style="font-size: 2.5rem;">Sector Breakdown &amp; Path Travelled</h2>
+      <h2 style="font-size: 2.5rem;">Breakdown &amp; Path Travelled</h2>
 
       <div class="sector-wrap">
         <div class="sector-chart">
@@ -2150,7 +2108,7 @@
         <div>
           <h3 style="font-size: 1.75rem; margin-bottom: 12px;">Balanced Sector Contribution</h3>
           <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-            Our strategy maintains active diversification across key global heavy industries while building dedicated manufacturing lanes for each segment.
+            Goal is to remain diversified, while retaining our core competencies within each segment, to maintain our contribution and progress.
           </p>
 
           <div class="sector-legend">
@@ -2174,31 +2132,26 @@
       <div style="margin-top: 60px;">
         <h3 style="font-size: 1.6rem; margin-bottom: 24px;">Path Travelled (Track Record)</h3>
 
-        <div class="bars-wrap">
-          <div class="bar-row">
-            <div class="bar-lbl">Patterns Developed</div>
-            <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
-            <div class="bar-val">1,000+</div>
+        <div class="track-grid">
+          <div class="dash-kpi-card" style="border-top-color: var(--brand-orange); padding: 20px;">
+            <div class="dash-kpi-val" style="font-size: 1.8rem;">1,000+</div>
+            <div class="dash-kpi-name">Patterns Developed</div>
           </div>
-          <div class="bar-row">
-            <div class="bar-lbl">Team Exposure</div>
-            <div class="bar-track"><div class="bar-fill" style="width: 75%;"></div></div>
-            <div class="bar-val">250 Yrs</div>
+          <div class="dash-kpi-card" style="border-top-color: var(--brand-orange); padding: 20px;">
+            <div class="dash-kpi-val" style="font-size: 1.8rem;">250 Yrs</div>
+            <div class="dash-kpi-name">Team Exposure</div>
           </div>
-          <div class="bar-row">
-            <div class="bar-lbl">Certified Grades</div>
-            <div class="bar-track"><div class="bar-fill" style="width: 60%;"></div></div>
-            <div class="bar-val">40+</div>
+          <div class="dash-kpi-card" style="border-top-color: var(--brand-orange); padding: 20px;">
+            <div class="dash-kpi-val" style="font-size: 1.8rem;">40+</div>
+            <div class="dash-kpi-name">Certified Grades</div>
           </div>
-          <div class="bar-row">
-            <div class="bar-lbl">OEM Customers</div>
-            <div class="bar-track"><div class="bar-fill" style="width: 45%;"></div></div>
-            <div class="bar-val">20+</div>
+          <div class="dash-kpi-card" style="border-top-color: var(--brand-orange); padding: 20px;">
+            <div class="dash-kpi-val" style="font-size: 1.8rem;">20+</div>
+            <div class="dash-kpi-name">OEM Customers</div>
           </div>
-          <div class="bar-row">
-            <div class="bar-lbl">Qualifications</div>
-            <div class="bar-track"><div class="bar-fill" style="width: 35%;"></div></div>
-            <div class="bar-val">6</div>
+          <div class="dash-kpi-card" style="border-top-color: var(--brand-orange); padding: 20px;">
+            <div class="dash-kpi-val" style="font-size: 1.8rem;">6</div>
+            <div class="dash-kpi-name">Qualifications</div>
           </div>
         </div>
       </div>
