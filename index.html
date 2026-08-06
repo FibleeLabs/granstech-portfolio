@@ -877,6 +877,171 @@
       gap: 20px;
     }
 
+    /* ── ORGANIZATION HIERARCHY CHART ─────────────── */
+    .org-chart-wrapper {
+      margin-top: 40px;
+      overflow-x: auto;
+      padding: 36px 20px 44px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+    }
+    .org-tree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 1080px;
+      margin: 0 auto;
+    }
+    .org-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .org-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+      position: relative;
+    }
+    .org-card:hover {
+      border-color: var(--brand-orange);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .org-card.primary-leader {
+      background: var(--text-main);
+      color: #ffffff;
+      padding: 18px 40px;
+      border-color: var(--text-main);
+      box-shadow: var(--shadow-md);
+    }
+    .org-card.secondary-leader {
+      background: #ffffff;
+      border: 2px solid var(--brand-orange);
+      padding: 16px 36px;
+    }
+    .org-card.manager-card {
+      background: #ffffff;
+      border-top: 3px solid var(--brand-orange);
+      padding: 16px 18px;
+      width: 100%;
+      min-height: 76px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .org-card.sub-card {
+      background: var(--bg-warm);
+      border: 1px solid var(--border-color);
+      padding: 10px 12px;
+      width: 100%;
+    }
+    .org-card.sub-card:hover {
+      background: var(--brand-orange-light);
+      border-color: var(--brand-orange-border);
+    }
+    .org-role {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+    .org-card.primary-leader .org-role {
+      color: #ffffff;
+      font-size: 1.25rem;
+    }
+    .org-card.secondary-leader .org-role {
+      color: var(--brand-orange);
+      font-size: 1.1rem;
+    }
+    .org-badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--brand-orange);
+      background: var(--brand-orange-light);
+      border: 1px solid var(--brand-orange-border);
+      padding: 2px 7px;
+      border-radius: 3px;
+      letter-spacing: 0.06em;
+      margin-top: 5px;
+      display: inline-block;
+    }
+    .org-card.primary-leader .org-badge {
+      background: rgba(230, 74, 25, 0.25);
+      border-color: var(--brand-orange);
+      color: #ff8a65;
+    }
+    .org-line-v {
+      width: 2px;
+      height: 24px;
+      background: var(--brand-orange);
+      margin: 0 auto;
+    }
+    .org-line-v-sm {
+      width: 2px;
+      height: 12px;
+      background: var(--border-color);
+      margin: 4px auto;
+    }
+    .org-branches {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      position: relative;
+      padding-top: 24px;
+      width: 100%;
+    }
+    .org-branches::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: var(--brand-orange);
+    }
+    .org-branch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      min-width: 190px;
+      position: relative;
+    }
+    .org-branch::before {
+      content: '';
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      width: 2px;
+      height: 24px;
+      background: var(--brand-orange);
+      transform: translateX(-50%);
+    }
+    .org-sub-nodes {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      margin-top: 4px;
+    }
+    .org-sub-nodes.flex-row {
+      flex-direction: row;
+      gap: 6px;
+    }
+
     /* ── CUSTOMER APPRECIATION ──────────────────── */
     .awards-grid {
       display: grid;
@@ -1261,6 +1426,7 @@
           <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
           <li><a href="#grades" class="nav-link">Grades</a></li>
           <li><a href="#certifications" class="nav-link">Quality</a></li>
+          <li><a href="#hierarchy" class="nav-link">Organization</a></li>
           <li><a href="#process" class="nav-link">Process Floor</a></li>
           <li><a href="#awards" class="nav-link">Appreciation</a></li>
           <li><a href="#products" class="nav-link">Products</a></li>
@@ -1523,8 +1689,143 @@
     </div>
   </section>
 
+  <!-- ORGANIZATION HIERARCHY -->
+  <section class="section bg-warm" id="hierarchy">
+    <div class="container">
+      <div class="eyebrow">LEADERSHIP &amp; STRUCTURE</div>
+      <h2 style="font-size: 2.5rem;">Organization Hierarchy</h2>
+      <p style="color: var(--text-muted); max-width: 680px; margin-top: 8px;">
+        Engineering-led management structure ensuring rigorous quality control, technical oversight, and seamless execution across all foundry operations.
+      </p>
+
+      <div class="org-chart-wrapper">
+        <div class="org-tree">
+          <!-- Level 1: Managing Director -->
+          <div class="org-node">
+            <div class="org-card primary-leader">
+              <div class="org-role">Managing Director</div>
+              <span class="org-badge">ENGINEER</span>
+            </div>
+            <div class="org-line-v"></div>
+            
+            <!-- Level 2: Vice President -->
+            <div class="org-node">
+              <div class="org-card secondary-leader">
+                <div class="org-role">Vice President</div>
+                <span class="org-badge">ENGINEER</span>
+              </div>
+              <div class="org-line-v"></div>
+              
+              <!-- Level 3: Department Managers (5 Branches) -->
+              <div class="org-branches">
+                <!-- Branch 1: Production -->
+                <div class="org-branch">
+                  <div class="org-card manager-card">
+                    <div class="org-role">Production Manager</div>
+                    <span class="org-badge">ENGINEER</span>
+                  </div>
+                  <div class="org-line-v"></div>
+                  <div class="org-sub-nodes">
+                    <div class="org-card sub-card">
+                      <div class="org-role">Pre Production</div>
+                      <span class="org-badge">ENGINEER</span>
+                    </div>
+                    <div class="org-card sub-card">
+                      <div class="org-role">Post Production</div>
+                      <span class="org-badge">ENGINEER</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Branch 2: Quality -->
+                <div class="org-branch">
+                  <div class="org-card manager-card">
+                    <div class="org-role">Quality Manager</div>
+                    <span class="org-badge">ENGINEER</span>
+                  </div>
+                  <div class="org-line-v"></div>
+                  <div class="org-sub-nodes">
+                    <div class="org-card sub-card">
+                      <div class="org-role">QA</div>
+                      <span class="org-badge">ENGINEER</span>
+                    </div>
+                    <div class="org-card sub-card">
+                      <div class="org-role">QC</div>
+                      <span class="org-badge">ENGINEER</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Branch 3: Sales / Marketing -->
+                <div class="org-branch">
+                  <div class="org-card manager-card">
+                    <div class="org-role">Sales / Marketing Manager</div>
+                    <span class="org-badge">ENGINEER</span>
+                  </div>
+                  <div class="org-line-v"></div>
+                  <div class="org-sub-nodes">
+                    <div class="org-card sub-card">
+                      <div class="org-role">Sales Manager</div>
+                      <span class="org-badge">ENGINEER</span>
+                    </div>
+                    <div class="org-card sub-card">
+                      <div class="org-role">Marketing Manager</div>
+                      <span class="org-badge">ENGINEER</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Branch 4: Factory Manager -->
+                <div class="org-branch">
+                  <div class="org-card manager-card">
+                    <div class="org-role">Factory Manager</div>
+                    <span class="org-badge">ENGINEER</span>
+                  </div>
+                  <div class="org-line-v"></div>
+                  <div class="org-sub-nodes">
+                    <div class="org-card sub-card">
+                      <div class="org-role">Purchase &amp; Accounts</div>
+                    </div>
+                    <div class="org-line-v-sm"></div>
+                    <div class="org-sub-nodes flex-row">
+                      <div class="org-card sub-card">
+                        <div class="org-role" style="font-size: 0.82rem;">HR &amp; Admin</div>
+                      </div>
+                      <div class="org-card sub-card">
+                        <div class="org-role" style="font-size: 0.82rem;">Security &amp; Safety</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Branch 5: Maintenance / Projects -->
+                <div class="org-branch">
+                  <div class="org-card manager-card">
+                    <div class="org-role">Maintenance / Projects Manager</div>
+                    <span class="org-badge">ENGINEER</span>
+                  </div>
+                  <div class="org-line-v"></div>
+                  <div class="org-sub-nodes">
+                    <div class="org-card sub-card">
+                      <div class="org-role">Maintenance</div>
+                      <span class="org-badge">ENGINEER</span>
+                    </div>
+                    <div class="org-card sub-card">
+                      <div class="org-role">Projects</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROCESS TIMELINE -->
-  <section class="section bg-warm" id="process">
+  <section class="section" id="process">
     <div class="container">
       <div class="eyebrow">BATCH ROUTE / HEAT-TO-SHIP</div>
       <h2 style="font-size: 2.5rem;">Inside the Foundry Floor</h2>
@@ -1771,41 +2072,6 @@
     </div>
   </section>
 
-  <!-- SECTOR CLIENTS MARQUEE -->
-  <section class="sector-marquee-container">
-    <div class="container" style="max-width: 1400px; padding: 0;">
-      <!-- Valves -->
-      <div class="sector-marquee-row">
-        <div class="sector-marquee-title">VALVES SECTOR</div>
-        <div class="sector-marquee-track">
-          <div class="sector-marquee-content">
-            <img src="./images/logos_valves.png" alt="Valves Clients">
-            <img src="./images/logos_valves.png" alt="Valves Clients">
-          </div>
-        </div>
-      </div>
-      <!-- Pumps -->
-      <div class="sector-marquee-row">
-        <div class="sector-marquee-title">PUMPS SECTOR</div>
-        <div class="sector-marquee-track">
-          <div class="sector-marquee-content" style="animation-duration: 28s;">
-            <img src="./images/logos_pumps.png" alt="Pumps Clients">
-            <img src="./images/logos_pumps.png" alt="Pumps Clients">
-          </div>
-        </div>
-      </div>
-      <!-- Defense -->
-      <div class="sector-marquee-row">
-        <div class="sector-marquee-title">DEFENSE SECTOR</div>
-        <div class="sector-marquee-track">
-          <div class="sector-marquee-content" style="animation-direction: reverse; animation-duration: 30s;">
-            <img src="./images/logos_defense.png" alt="Defense Clients">
-            <img src="./images/logos_defense.png" alt="Defense Clients">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- CUSTOMER APPRECIATION & AWARDS -->
   <section class="section bg-warm" id="awards">
@@ -2193,6 +2459,7 @@
             <li><a href="#capabilities">Capabilities</a></li>
             <li><a href="#grades">Material Grades</a></li>
             <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#hierarchy">Organization Hierarchy</a></li>
             <li><a href="#process">Process Floor</a></li>
             <li><a href="#awards">Customer Appreciation</a></li>
             <li><a href="#products">Product Gallery</a></li>
