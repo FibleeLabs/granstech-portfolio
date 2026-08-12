@@ -1394,25 +1394,219 @@
       box-shadow: 0 0 0 3px rgba(230, 74, 25, 0.08);
     }
 
-    /* ── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 992px) {
-      .container { padding: 0 24px; }
-      .hero-grid, .cert-grid, .sector-wrap, .proc-compact-grid, .footer-grid, .awards-grid, .dash-kpi-grid {
-        grid-template-columns: 1fr;
-      }
-      .nav-menu { display: none; }
-      .spec-grid { grid-template-columns: repeat(2, 1fr); }
-      .bar-row { grid-template-columns: 130px 1fr 60px; }
-      .hero-section { padding-top: 120px; }
+    /* ── MOBILE NAV & HAMBURGER STYLING ────────── */
+    .mobile-toggle-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;
+    }
+    .hamburger-bar {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .mobile-toggle-btn.active .hamburger-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+      background-color: var(--brand-orange);
+    }
+    .mobile-toggle-btn.active .hamburger-bar:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-toggle-btn.active .hamburger-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+      background-color: var(--brand-orange);
     }
 
-    @media (max-width: 600px) {
+    .mobile-nav-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 2px solid var(--brand-orange);
+      padding: 24px 32px;
+      box-shadow: 0 12px 30px rgba(23, 20, 15, 0.12);
+      transform: translateY(-10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav-drawer.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .mobile-menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .mobile-menu-list a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+      display: block;
+      padding: 4px 0;
+    }
+    .mobile-menu-list a:hover {
+      color: var(--brand-orange);
+    }
+
+    .org-scroll-hint {
+      display: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--brand-orange);
+      background: var(--brand-orange-light);
+      border: 1px dashed var(--brand-orange-border);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* ── RESPONSIVE MEDIA QUERIES ─────────────────────────── */
+
+    /* Desktop Large (> 1200px) */
+    @media (min-width: 1201px) {
+      .container { max-width: 1280px; }
+    }
+
+    /* Laptops & Tablets Landscape (993px - 1200px) */
+    @media (max-width: 1200px) {
+      .container { max-width: 100%; padding: 0 32px; }
+      .hero-grid { gap: 40px; }
+      .hero-title { font-size: 3.8rem; }
+      .sector-wrap { gap: 32px; padding: 36px; }
+    }
+
+    /* Tablets Portrait & Medium Screens (769px - 992px) */
+    @media (max-width: 992px) {
+      .container { padding: 0 28px; }
+      .nav-menu { display: none; }
+      .mobile-toggle-btn { display: flex; }
+      .mobile-nav-drawer { display: block; }
+      .org-scroll-hint { display: block; }
+
+      .hero-section { padding-top: 124px; padding-bottom: 64px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-showcase-img { height: 280px; }
+      
+      .dash-kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .cert-grid { grid-template-columns: 1fr; gap: 24px; }
+      .proc-compact-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .awards-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .sector-wrap { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .sector-legend { max-width: 480px; margin: 22px auto 0; }
+
+      .org-chart-wrapper {
+        -webkit-overflow-scrolling: touch;
+        padding: 24px 16px 36px;
+      }
+      .org-tree { min-width: 1100px; }
+    }
+
+    /* Tablets Small & Large Phones (577px - 768px) */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .section { padding: 70px 0; }
+      .eyebrow { font-size: 0.72rem; letter-spacing: 0.12em; }
+      h2 { font-size: 2rem !important; }
+
+      .hero-title { font-size: 2.8rem; }
+      .hero-subtitle { font-size: 0.98rem; }
+      .spec-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .spec-card { padding: 14px 12px; }
+      .spec-num { font-size: 1.6rem; }
+
+      .dash-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .dash-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        width: 100%;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .dash-tab-btn { flex-shrink: 0; padding: 7px 14px; font-size: 0.82rem; }
+
+      .cap-grid { grid-template-columns: 1fr; }
+      .qual-grid { grid-template-columns: 1fr; }
+      .proc-compact-grid { grid-template-columns: 1fr; }
+      .awards-grid { grid-template-columns: 1fr; }
+      .prod-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+      
+      .filter-bar {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        width: 100%;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .filter-btn { flex-shrink: 0; padding: 8px 18px; font-size: 0.85rem; }
+
+      .track-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; font-size: 0.88rem; }
+      
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    }
+
+    /* Small Mobile Phones (< 576px) */
+    @media (max-width: 576px) {
       .container { padding: 0 16px; }
-      .section { padding: 64px 0; }
-      .spec-grid { grid-template-columns: 1fr; }
+      .section { padding: 54px 0; }
+      .section-tight { padding: 40px 0; }
+      
+      .brand-icon { width: 38px; height: 38px; font-size: 1.2rem; }
+      .brand-name { font-size: 1.15rem; }
+      .brand-tag { font-size: 0.54rem; letter-spacing: 0.06em; }
+
+      .hero-section { padding-top: 104px; padding-bottom: 48px; }
+      .hero-title { font-size: 2.2rem; }
+      .hero-subtitle { font-size: 0.92rem; margin-bottom: 24px; }
+      .hero-actions { flex-direction: column; gap: 10px; width: 100%; }
+      .hero-actions .btn-primary, .hero-actions .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .spec-grid { grid-template-columns: repeat(2, 1fr); }
+      .dash-kpi-grid { grid-template-columns: 1fr; }
+      .track-grid { grid-template-columns: 1fr; }
+
+      .grade-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .grade-card { padding: 14px 10px; }
+      .grade-name { font-size: 0.95rem; }
+
+      .cert-box, .roadmap-box { padding: 24px 18px; }
       .cert-list { grid-template-columns: 1fr; }
-      .track-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-title { font-size: 2.6rem; }
+      
+      .flow-stepper { gap: 8px; justify-content: center; }
+      .flow-node { padding: 10px 14px; font-size: 0.85rem; }
+      .flow-arrow { display: none; }
+
+      .partner-banner { padding: 24px 16px; }
+      
+      .modal-container { padding: 24px 18px; width: 95%; max-height: 90vh; overflow-y: auto; }
+      .modal-close { top: 12px; right: 14px; }
     }
   </style>
 </head>
@@ -1443,7 +1637,30 @@
 
         <div style="display: flex; gap: 16px; align-items: center;">
           <button class="btn-primary" onclick="openQuoteModal()">Request RFP Quote</button>
+          
+          <button class="mobile-toggle-btn" id="mobileToggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+      <ul class="mobile-menu-list">
+        <li><a href="#capabilities" onclick="closeMobileMenu()">Capabilities</a></li>
+        <li><a href="#grades" onclick="closeMobileMenu()">Grades</a></li>
+        <li><a href="#certifications" onclick="closeMobileMenu()">Quality</a></li>
+        <li><a href="#hierarchy" onclick="closeMobileMenu()">Organization</a></li>
+        <li><a href="#process" onclick="closeMobileMenu()">Process Floor</a></li>
+        <li><a href="#awards" onclick="closeMobileMenu()">Appreciation</a></li>
+        <li><a href="#products" onclick="closeMobileMenu()">Products</a></li>
+        <li><a href="#partners" onclick="closeMobileMenu()">Partners</a></li>
+      </ul>
+      <div style="margin-top: 16px;">
+        <button class="btn-primary" style="width: 100%; text-align: center;" onclick="closeMobileMenu(); openQuoteModal();">Request RFP Quote</button>
       </div>
     </div>
   </header>
@@ -1721,6 +1938,10 @@
       <p style="color: var(--text-muted); max-width: 680px; margin-top: 8px;">
         Engineering-led management structure ensuring rigorous quality control, technical oversight, and seamless execution across all foundry operations.
       </p>
+
+      <div class="org-scroll-hint">
+        <span>↔ Scroll horizontally to explore full organization tree</span>
+      </div>
 
       <div class="org-chart-wrapper">
         <div class="org-tree">
@@ -2542,6 +2763,21 @@
   </div>
 
   <script>
+    // Mobile Navigation Drawer Toggle
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const toggle = document.getElementById('mobileToggle');
+      if (drawer) drawer.classList.toggle('active');
+      if (toggle) toggle.classList.toggle('active');
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const toggle = document.getElementById('mobileToggle');
+      if (drawer) drawer.classList.remove('active');
+      if (toggle) toggle.classList.remove('active');
+    }
+
     // Header Scroll Effect
     window.addEventListener('scroll', () => {
       const navbar = document.getElementById('navbar');
