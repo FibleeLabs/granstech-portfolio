@@ -881,7 +881,7 @@
     .org-chart-wrapper {
       margin-top: 40px;
       overflow-x: auto;
-      padding: 36px 20px 44px;
+      padding: 36px 24px 44px;
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
@@ -891,7 +891,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 1080px;
+      min-width: 1200px;
       margin: 0 auto;
     }
     .org-node {
@@ -918,19 +918,19 @@
     .org-card.primary-leader {
       background: var(--text-main);
       color: #ffffff;
-      padding: 18px 40px;
+      padding: 18px 44px;
       border-color: var(--text-main);
       box-shadow: var(--shadow-md);
     }
     .org-card.secondary-leader {
       background: #ffffff;
       border: 2px solid var(--brand-orange);
-      padding: 16px 36px;
+      padding: 16px 40px;
     }
     .org-card.manager-card {
       background: #ffffff;
       border-top: 3px solid var(--brand-orange);
-      padding: 16px 18px;
+      padding: 16px 14px;
       width: 100%;
       min-height: 76px;
       display: flex;
@@ -941,16 +941,24 @@
     .org-card.sub-card {
       background: var(--bg-warm);
       border: 1px solid var(--border-color);
-      padding: 10px 12px;
+      padding: 10px 8px;
       width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
     }
     .org-card.sub-card:hover {
       background: var(--brand-orange-light);
       border-color: var(--brand-orange-border);
     }
+    .org-card.sub-card .org-role {
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+    }
     .org-role {
       font-family: 'Oswald', sans-serif;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.03em;
@@ -1007,8 +1015,8 @@
       content: '';
       position: absolute;
       top: 0;
-      left: 10%;
-      right: 10%;
+      left: calc(100% / 12);
+      right: calc(100% / 12);
       height: 2px;
       background: var(--brand-orange);
     }
@@ -1017,7 +1025,7 @@
       flex-direction: column;
       align-items: center;
       flex: 1;
-      min-width: 190px;
+      min-width: 185px;
       position: relative;
     }
     .org-branch::before {
@@ -1578,8 +1586,8 @@
           <div class="cap-icon-box">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
           </div>
-          <h3 class="cap-title">250 MT / Month Capacity</h3>
-          <p class="cap-text">Installed monthly capacity supporting recurring production lots and rapid prototype delivery.</p>
+          <h3 class="cap-title">3600 MT / Capacity</h3>
+          <p class="cap-text">Installed capacity supporting recurring production lots and rapid prototype delivery.</p>
         </div>
 
         <div class="cap-card">
@@ -1681,7 +1689,7 @@
             </li>
             <li class="roadmap-item">
               <span class="roadmap-bullet"></span>
-              <div><strong>25,000 Sq. Ft New Expansion</strong> — In-house Radiography</div>
+              <div><strong>25,000 Sq. Ft New Expansion</strong> — In-house</div>
             </li>
           </ul>
         </div>
@@ -1704,7 +1712,6 @@
           <div class="org-node">
             <div class="org-card primary-leader">
               <div class="org-role">Managing Director</div>
-              <span class="org-badge">ENGINEER</span>
             </div>
             <div class="org-line-v"></div>
             
@@ -1712,27 +1719,23 @@
             <div class="org-node">
               <div class="org-card secondary-leader">
                 <div class="org-role">Vice President</div>
-                <span class="org-badge">ENGINEER</span>
               </div>
               <div class="org-line-v"></div>
               
-              <!-- Level 3: Department Managers (5 Branches) -->
+              <!-- Level 3: Department Managers (6 Branches) -->
               <div class="org-branches">
                 <!-- Branch 1: Production -->
                 <div class="org-branch">
                   <div class="org-card manager-card">
                     <div class="org-role">Production Manager</div>
-                    <span class="org-badge">ENGINEER</span>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes">
+                  <div class="org-sub-nodes flex-row">
                     <div class="org-card sub-card">
                       <div class="org-role">Pre Production</div>
-                      <span class="org-badge">ENGINEER</span>
                     </div>
                     <div class="org-card sub-card">
                       <div class="org-role">Post Production</div>
-                      <span class="org-badge">ENGINEER</span>
                     </div>
                   </div>
                 </div>
@@ -1741,17 +1744,14 @@
                 <div class="org-branch">
                   <div class="org-card manager-card">
                     <div class="org-role">Quality Manager</div>
-                    <span class="org-badge">ENGINEER</span>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes">
+                  <div class="org-sub-nodes flex-row">
                     <div class="org-card sub-card">
                       <div class="org-role">QA</div>
-                      <span class="org-badge">ENGINEER</span>
                     </div>
                     <div class="org-card sub-card">
                       <div class="org-role">QC</div>
-                      <span class="org-badge">ENGINEER</span>
                     </div>
                   </div>
                 </div>
@@ -1760,17 +1760,14 @@
                 <div class="org-branch">
                   <div class="org-card manager-card">
                     <div class="org-role">Sales / Marketing Manager</div>
-                    <span class="org-badge">ENGINEER</span>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes">
+                  <div class="org-sub-nodes flex-row">
                     <div class="org-card sub-card">
                       <div class="org-role">Sales Manager</div>
-                      <span class="org-badge">ENGINEER</span>
                     </div>
                     <div class="org-card sub-card">
                       <div class="org-role">Marketing Manager</div>
-                      <span class="org-badge">ENGINEER</span>
                     </div>
                   </div>
                 </div>
@@ -1779,36 +1776,43 @@
                 <div class="org-branch">
                   <div class="org-card manager-card">
                     <div class="org-role">Factory Manager</div>
-                    <span class="org-badge">ENGINEER</span>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes">
+                  <div class="org-sub-nodes flex-row">
                     <div class="org-card sub-card">
-                      <div class="org-role">Purchase &amp; Accounts</div>
+                      <div class="org-role">HR &amp; Admin</div>
                     </div>
-                    <div class="org-line-v-sm"></div>
-                    <div class="org-sub-nodes flex-row">
-                      <div class="org-card sub-card">
-                        <div class="org-role" style="font-size: 0.82rem;">HR &amp; Admin</div>
-                      </div>
-                      <div class="org-card sub-card">
-                        <div class="org-role" style="font-size: 0.82rem;">Security &amp; Safety</div>
-                      </div>
+                    <div class="org-card sub-card">
+                      <div class="org-role">Security &amp; Safety</div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Branch 5: Maintenance / Projects -->
+                <!-- Branch 5: Purchase & Accounts -->
+                <div class="org-branch">
+                  <div class="org-card manager-card">
+                    <div class="org-role">Purchase &amp; Accounts</div>
+                  </div>
+                  <div class="org-line-v"></div>
+                  <div class="org-sub-nodes flex-row">
+                    <div class="org-card sub-card">
+                      <div class="org-role">Stores</div>
+                    </div>
+                    <div class="org-card sub-card">
+                      <div class="org-role">Accounts</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Branch 6: Maintenance / Projects -->
                 <div class="org-branch">
                   <div class="org-card manager-card">
                     <div class="org-role">Maintenance / Projects Manager</div>
-                    <span class="org-badge">ENGINEER</span>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes">
+                  <div class="org-sub-nodes flex-row">
                     <div class="org-card sub-card">
                       <div class="org-role">Maintenance</div>
-                      <span class="org-badge">ENGINEER</span>
                     </div>
                     <div class="org-card sub-card">
                       <div class="org-role">Projects</div>
