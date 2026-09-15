@@ -151,6 +151,13 @@
       height: 78px;
     }
 
+    /* Desktop: nav actions (PDF + RFQ buttons) */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .brand-logo {
       display: flex;
       align-items: center;
@@ -277,6 +284,67 @@
       border-color: var(--brand-orange);
       color: var(--brand-orange);
       background: var(--brand-orange-light);
+    }
+
+    /* Nav PDF button — hidden on mobile/tablet, shown on desktop only */
+    .btn-pdf-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #ffffff;
+      color: var(--brand-orange);
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--brand-orange);
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .btn-pdf-download:hover {
+      background: var(--brand-orange);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(230, 74, 25, 0.25);
+      transform: translateY(-1px);
+    }
+    .btn-pdf-download:active { transform: translateY(0); }
+    .btn-pdf-download svg {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .btn-pdf-download:hover svg {
+      transform: translateY(1px);
+    }
+
+    .btn-hero-pdf {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #ffffff;
+      color: var(--text-main);
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-color);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-hero-pdf:hover {
+      border-color: var(--brand-orange);
+      color: var(--brand-orange);
+      background: var(--brand-orange-light);
+      transform: translateY(-1px);
     }
 
     /* ── HERO SECTION ───────────────────────────── */
@@ -891,7 +959,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 1200px;
+      min-width: 1460px;
       margin: 0 auto;
     }
     .org-node {
@@ -904,7 +972,7 @@
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 14px 20px;
+      padding: 16px 18px;
       text-align: center;
       box-shadow: var(--shadow-sm);
       transition: all var(--transition);
@@ -915,82 +983,192 @@
       box-shadow: var(--shadow-md);
       transform: translateY(-2px);
     }
+    
+    /* Org Avatar */
+    .org-avatar-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .org-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid var(--border-color);
+      background: #f7f5f0;
+      transition: transform var(--transition), border-color var(--transition);
+      box-shadow: 0 2px 6px rgba(23, 20, 15, 0.08);
+    }
+    .org-card:hover .org-avatar {
+      transform: scale(1.08);
+      border-color: var(--brand-orange);
+    }
+
+    /* Org Card Variations */
     .org-card.primary-leader {
       background: var(--text-main);
       color: #ffffff;
-      padding: 18px 44px;
+      padding: 22px 42px;
       border-color: var(--text-main);
       box-shadow: var(--shadow-md);
+      min-width: 320px;
+    }
+    .org-card.primary-leader .org-avatar {
+      width: 62px;
+      height: 62px;
+      border: 2.5px solid var(--brand-orange);
+      box-shadow: 0 4px 14px rgba(230, 74, 25, 0.35);
     }
     .org-card.secondary-leader {
       background: #ffffff;
       border: 2px solid var(--brand-orange);
-      padding: 16px 40px;
+      padding: 18px 36px;
+      min-width: 290px;
+    }
+    .org-card.secondary-leader .org-avatar {
+      width: 54px;
+      height: 54px;
+      border: 2px solid var(--brand-orange);
     }
     .org-card.manager-card {
       background: #ffffff;
       border-top: 3px solid var(--brand-orange);
-      padding: 16px 14px;
+      padding: 18px 14px;
       width: 100%;
-      min-height: 76px;
+      min-height: 195px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
+    .org-card.manager-card .org-avatar {
+      width: 48px;
+      height: 48px;
+    }
+
     .org-card.sub-card {
       background: var(--bg-warm);
       border: 1px solid var(--border-color);
-      padding: 10px 8px;
+      padding: 12px 14px;
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      min-height: 48px;
+      gap: 12px;
+      text-align: left;
+      min-height: 84px;
+      border-radius: var(--radius-sm);
     }
     .org-card.sub-card:hover {
       background: var(--brand-orange-light);
       border-color: var(--brand-orange-border);
     }
-    .org-card.sub-card .org-role {
-      font-size: 0.82rem;
-      letter-spacing: 0.04em;
+    .org-card.sub-card .org-avatar-wrap {
+      margin-bottom: 0;
+      flex-shrink: 0;
     }
-    .org-role {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
+    .org-card.sub-card .org-avatar {
+      width: 42px;
+      height: 42px;
+    }
+    .org-card.sub-card .org-card-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Org Typography */
+    .org-name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.94rem;
       color: var(--text-main);
+      line-height: 1.25;
+      margin-bottom: 2px;
+    }
+    .org-card.primary-leader .org-name {
+      color: #ffffff;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+    .org-card.secondary-leader .org-name {
+      color: var(--text-main);
+      font-size: 1.05rem;
+    }
+    .org-card.sub-card .org-name {
+      font-size: 0.85rem;
       line-height: 1.2;
     }
+
+    .org-role {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--brand-orange);
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
     .org-card.primary-leader .org-role {
-      color: #ffffff;
-      font-size: 1.25rem;
+      color: #ff8a65;
+      font-size: 1.05rem;
     }
     .org-card.secondary-leader .org-role {
       color: var(--brand-orange);
-      font-size: 1.1rem;
+      font-size: 0.96rem;
     }
-    .org-badge {
+    .org-card.sub-card .org-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .org-exp {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.62rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--brand-orange);
       background: var(--brand-orange-light);
       border: 1px solid var(--brand-orange-border);
-      padding: 2px 7px;
-      border-radius: 3px;
-      letter-spacing: 0.06em;
-      margin-top: 5px;
-      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+      margin-top: 4px;
+      white-space: nowrap;
     }
-    .org-card.primary-leader .org-badge {
+    .org-card.primary-leader .org-exp {
       background: rgba(230, 74, 25, 0.25);
-      border-color: var(--brand-orange);
-      color: #ff8a65;
+      border-color: rgba(230, 74, 25, 0.5);
+      color: #ffab91;
     }
+    .org-card.sub-card .org-exp {
+      font-size: 0.68rem;
+      padding: 2px 6px;
+      margin-top: 3px;
+    }
+
+    .org-sub-info {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      line-height: 1.3;
+      margin-top: 4px;
+    }
+    .org-card.primary-leader .org-sub-info {
+      color: #c5beaf;
+    }
+    .org-card.sub-card .org-sub-info {
+      font-size: 0.68rem;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Org Tree Connectors */
     .org-line-v {
       width: 2px;
       height: 24px;
@@ -1025,7 +1203,7 @@
       flex-direction: column;
       align-items: center;
       flex: 1;
-      min-width: 185px;
+      min-width: 228px;
       position: relative;
     }
     .org-branch::before {
@@ -1045,9 +1223,6 @@
       width: 100%;
       margin-top: 4px;
     }
-    .org-sub-nodes.flex-row {
-      flex-direction: row;
-      gap: 6px;
     }
 
     /* ── CUSTOMER APPRECIATION ──────────────────── */
@@ -1502,6 +1677,9 @@
     @media (max-width: 992px) {
       .container { padding: 0 28px; }
       .nav-menu { display: none; }
+      /* Hide nav-only buttons on tablets/mobile — they live in the mobile drawer instead */
+      .nav-actions { display: none !important; }
+      /* Ensure nav-actions gap is removed */
       .mobile-toggle-btn { display: flex; }
       .mobile-nav-drawer { display: block; }
       .org-scroll-hint { display: block; }
@@ -1583,7 +1761,9 @@
       .hero-title { font-size: 2.2rem; }
       .hero-subtitle { font-size: 0.92rem; margin-bottom: 24px; }
       .hero-actions { flex-direction: column; gap: 10px; width: 100%; }
-      .hero-actions .btn-primary, .hero-actions .btn-secondary {
+      .hero-actions .btn-primary,
+      .hero-actions .btn-secondary,
+      .hero-actions .btn-hero-pdf {
         width: 100%;
         justify-content: center;
       }
@@ -1607,6 +1787,167 @@
       
       .modal-container { padding: 24px 18px; width: 95%; max-height: 90vh; overflow-y: auto; }
       .modal-close { top: 12px; right: 14px; }
+    }
+
+    /* ── PRINT / PDF EXPORT STYLES ───────────────────────────────────────
+       Uses the browser's built-in "Save as PDF" / Print dialog.
+       All colors, backgrounds, and images are preserved exactly.
+    ─────────────────────────────────────────────────────────────────── */
+    @media print {
+      /* Force every element to print with its exact screen colors */
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 10mm 12mm;
+      }
+
+      html, body {
+        background: #ffffff !important;
+      }
+
+      /* ── Hide navigation & interactive chrome ── */
+      header, #navbar,
+      .mobile-nav-drawer, .mobile-toggle-btn, .nav-actions,
+      .btn-pdf-download, .btn-hero-pdf,
+      .modal-overlay, #pdfLoadingOverlay,
+      .org-scroll-hint, .filter-bar,
+      .hero-actions, .dash-tabs, .dash-header .dash-tabs {
+        display: none !important;
+      }
+
+      /* ── Container: full width ── */
+      .container {
+        max-width: 100% !important;
+        padding: 0 8px !important;
+      }
+
+      /* ── Section spacing ── */
+      .section        { padding: 24px 0 !important; }
+      .section-tight  { padding: 16px 0 !important; }
+      .dash-section   { padding: 24px 0 !important; }
+
+      /* ── Hero ── */
+      .hero-section {
+        padding-top: 24px !important;
+        padding-bottom: 20px !important;
+        border-bottom: 3px solid #e64a19 !important;
+        background: #ffffff !important;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 28px !important;
+        align-items: start !important;
+      }
+      .hero-title   { font-size: 2.4rem !important; }
+      .hero-subtitle { font-size: 0.9rem !important; margin-bottom: 16px !important; }
+      .spec-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 8px !important;
+        padding-top: 14px !important;
+      }
+      .spec-card {
+        background: #f7f5f0 !important;
+        border: 1px solid #e2ddd3 !important;
+        padding: 12px 10px !important;
+      }
+      .hero-showcase {
+        display: block !important;
+        box-shadow: none !important;
+      }
+      .hero-showcase-img { height: 220px !important; }
+
+      /* ── Dashboard / KPI ── */
+      .dash-section { background: #f7f5f0 !important; }
+      .dash-kpi-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+      }
+      .dash-kpi-card {
+        display: flex !important;
+        background: #ffffff !important;
+        border: 1px solid #e2ddd3 !important;
+        border-top: 3px solid #e64a19 !important;
+        padding: 14px 12px !important;
+      }
+
+      /* ── Capabilities ── */
+      .cap-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+      .cap-card  { background: #ffffff !important; border: 1px solid #e2ddd3 !important; }
+
+      /* ── Grades ── */
+      .grade-grid  { grid-template-columns: repeat(5, 1fr) !important; gap: 8px !important; }
+      .grade-card  { background: #ffffff !important; border: 1.5px solid #17140f !important; padding: 14px 10px !important; }
+
+      /* ── Certifications ── */
+      .cert-grid   { grid-template-columns: repeat(2, 1fr) !important; }
+      .cert-box    { background: #ffffff !important; border: 1px solid #e2ddd3 !important; }
+
+      /* ── Process ── */
+      .proc-compact-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+
+      /* ── Awards / Appreciation ── */
+      .awards-grid  { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+      .award-card   { background: #ffffff !important; border: 1px solid #e2ddd3 !important; }
+
+      /* ── Products ── */
+      .prod-grid  { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+      .prod-card  { display: block !important; background: #ffffff !important; border: 1px solid #e2ddd3 !important; }
+
+      /* ── Page breaks ── */
+      .dash-section   { page-break-before: always; }
+      #capabilities   { page-break-before: always; }
+      #grades         { page-break-before: always; }
+      #certifications { page-break-before: always; }
+      #hierarchy      { page-break-before: always; }
+      #process        { page-break-before: always; }
+      #awards         { page-break-before: always; }
+      #products       { page-break-before: always; }
+      #partners       { page-break-before: always; }
+
+      /* Avoid splitting cards mid-page */
+      .spec-card, .dash-kpi-card, .cap-card, .grade-card,
+      .award-card, .proc-compact-card, .prod-card, .org-card,
+      .cert-box, .roadmap-box {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      /* ── Organization Chart ── */
+      .org-chart-wrapper {
+        overflow: visible !important;
+        border: 1px solid #e2ddd3 !important;
+        padding: 16px 8px !important;
+        box-shadow: none !important;
+        width: 100% !important;
+      }
+      .org-tree   { min-width: unset !important; width: 100% !important; }
+      .org-branches { gap: 8px !important; flex-wrap: wrap !important; }
+      .org-branch {
+        min-width: 120px !important;
+        flex: 1 1 120px !important;
+      }
+      .org-card          { padding: 8px 6px !important; }
+      .org-card.primary-leader   { background: #17140f !important; padding: 12px 16px !important; }
+      .org-card.secondary-leader { border: 2px solid #e64a19 !important; padding: 10px 14px !important; }
+      .org-card.manager-card     { min-height: auto !important; border-top: 3px solid #e64a19 !important; }
+      .org-card.sub-card         { min-height: auto !important; background: #f7f5f0 !important; gap: 6px !important; }
+      .org-avatar-wrap { display: none !important; }
+      .org-line-v  { height: 12px !important; }
+      .org-branches::before { top: 0 !important; }
+      .org-branch::before   { top: -12px !important; height: 12px !important; }
+
+      /* ── Images ── */
+      img { max-width: 100% !important; height: auto !important; }
+
+      /* ── Footer ── */
+      footer { page-break-before: avoid !important; padding: 16px 0 !important; }
     }
   </style>
 </head>
@@ -1635,15 +1976,19 @@
           <li><a href="#partners" class="nav-link">Partners</a></li>
         </ul>
 
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <button class="btn-primary" onclick="openQuoteModal()">Request RFP Quote</button>
-          
-          <button class="mobile-toggle-btn" id="mobileToggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
+        <div class="nav-actions">
+          <button class="btn-pdf-download" id="navPdfBtn" onclick="downloadPortfolioPdf()" title="Download Complete Portfolio as PDF">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download PDF</span>
           </button>
+          <button class="btn-primary nav-rfp-btn" onclick="openQuoteModal()">Request RFP Quote</button>
         </div>
+        
+        <button class="mobile-toggle-btn" id="mobileToggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
       </div>
     </div>
 
@@ -1659,7 +2004,11 @@
         <li><a href="#products" onclick="closeMobileMenu()">Products</a></li>
         <li><a href="#partners" onclick="closeMobileMenu()">Partners</a></li>
       </ul>
-      <div style="margin-top: 16px;">
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+        <button class="btn-pdf-download" style="width: 100%; justify-content: center;" onclick="closeMobileMenu(); downloadPortfolioPdf();">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Download Portfolio PDF</span>
+        </button>
         <button class="btn-primary" style="width: 100%; text-align: center;" onclick="closeMobileMenu(); openQuoteModal();">Request RFP Quote</button>
       </div>
     </div>
@@ -1679,6 +2028,10 @@
           <div class="hero-actions">
             <a href="#products" class="btn-primary">View Product Portfolio →</a>
             <a href="#process" class="btn-secondary">Explore Process Floor</a>
+            <button class="btn-hero-pdf" onclick="downloadPortfolioPdf()" title="Download Complete Portfolio as PDF">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download PDF</span>
+            </button>
           </div>
 
           <div class="spec-grid">
@@ -1944,35 +2297,80 @@
       </div>
 
       <div class="org-chart-wrapper">
-        <div class="org-tree">
+        <div class="org-tree" id="orgTree">
           <!-- Level 1: Managing Director -->
           <div class="org-node">
             <div class="org-card primary-leader">
+              <div class="org-avatar-wrap">
+                <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Managing Director">
+              </div>
+              <div class="org-name">Name Placeholder</div>
               <div class="org-role">Managing Director</div>
+              <div class="org-exp">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Years of Exp
+              </div>
             </div>
             <div class="org-line-v"></div>
             
             <!-- Level 2: Vice President -->
             <div class="org-node">
               <div class="org-card secondary-leader">
+                <div class="org-avatar-wrap">
+                  <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Vice President">
+                </div>
+                <div class="org-name">Name Placeholder</div>
                 <div class="org-role">Vice President</div>
+                <div class="org-exp">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  Years of Exp
+                </div>
               </div>
               <div class="org-line-v"></div>
               
               <!-- Level 3: Department Managers (6 Branches) -->
               <div class="org-branches">
+                
                 <!-- Branch 1: Production -->
                 <div class="org-branch">
                   <div class="org-card manager-card">
+                    <div class="org-avatar-wrap">
+                      <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Production Manager">
+                    </div>
+                    <div class="org-name">Name Placeholder</div>
                     <div class="org-role">Production Manager</div>
+                    <div class="org-exp">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      Years of Exp
+                    </div>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes flex-row">
+                  <div class="org-sub-nodes">
                     <div class="org-card sub-card">
-                      <div class="org-role">Pre Production</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Pre Production">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">Pre Production</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                     <div class="org-card sub-card">
-                      <div class="org-role">Post Production</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Post Production">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">Post Production</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1980,15 +2378,43 @@
                 <!-- Branch 2: Quality -->
                 <div class="org-branch">
                   <div class="org-card manager-card">
+                    <div class="org-avatar-wrap">
+                      <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Quality Manager">
+                    </div>
+                    <div class="org-name">Name Placeholder</div>
                     <div class="org-role">Quality Manager</div>
+                    <div class="org-exp">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      Years of Exp
+                    </div>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes flex-row">
+                  <div class="org-sub-nodes">
                     <div class="org-card sub-card">
-                      <div class="org-role">QA</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="QA">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">QA</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                     <div class="org-card sub-card">
-                      <div class="org-role">QC</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="QC">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">QC</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1996,15 +2422,43 @@
                 <!-- Branch 3: Sales / Marketing -->
                 <div class="org-branch">
                   <div class="org-card manager-card">
+                    <div class="org-avatar-wrap">
+                      <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Sales / Marketing Manager">
+                    </div>
+                    <div class="org-name">Name Placeholder</div>
                     <div class="org-role">Sales / Marketing Manager</div>
+                    <div class="org-exp">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      Years of Exp
+                    </div>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes flex-row">
+                  <div class="org-sub-nodes">
                     <div class="org-card sub-card">
-                      <div class="org-role">Sales Manager</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Sales Manager">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">Sales Manager</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                     <div class="org-card sub-card">
-                      <div class="org-role">Marketing Manager</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Marketing Manager">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">Marketing Manager</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2012,15 +2466,43 @@
                 <!-- Branch 4: Factory Manager -->
                 <div class="org-branch">
                   <div class="org-card manager-card">
+                    <div class="org-avatar-wrap">
+                      <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Factory Manager">
+                    </div>
+                    <div class="org-name">Name Placeholder</div>
                     <div class="org-role">Factory Manager</div>
+                    <div class="org-exp">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      Years of Exp
+                    </div>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes flex-row">
+                  <div class="org-sub-nodes">
                     <div class="org-card sub-card">
-                      <div class="org-role">HR &amp; Admin</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="HR & Admin">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">HR &amp; Admin</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                     <div class="org-card sub-card">
-                      <div class="org-role">Security &amp; Safety</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Security & Safety">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">Security &amp; Safety</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2028,15 +2510,43 @@
                 <!-- Branch 5: Purchase & Accounts -->
                 <div class="org-branch">
                   <div class="org-card manager-card">
+                    <div class="org-avatar-wrap">
+                      <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Purchase & Accounts Officer">
+                    </div>
+                    <div class="org-name">Name Placeholder</div>
                     <div class="org-role">Purchase &amp; Accounts Officer</div>
+                    <div class="org-exp">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      Years of Exp
+                    </div>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes flex-row">
+                  <div class="org-sub-nodes">
                     <div class="org-card sub-card">
-                      <div class="org-role">Stores</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Stores">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">Stores</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                     <div class="org-card sub-card">
-                      <div class="org-role">Accounts</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Accounts">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">Accounts</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2044,15 +2554,43 @@
                 <!-- Branch 6: Maintenance / Projects -->
                 <div class="org-branch">
                   <div class="org-card manager-card">
+                    <div class="org-avatar-wrap">
+                      <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Maintenance / Projects Manager">
+                    </div>
+                    <div class="org-name">Name Placeholder</div>
                     <div class="org-role">Maintenance / Projects Manager</div>
+                    <div class="org-exp">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      Years of Exp
+                    </div>
                   </div>
                   <div class="org-line-v"></div>
-                  <div class="org-sub-nodes flex-row">
+                  <div class="org-sub-nodes">
                     <div class="org-card sub-card">
-                      <div class="org-role">Maintenance</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Maintenance">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">Maintenance</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                     <div class="org-card sub-card">
-                      <div class="org-role">Projects</div>
+                      <div class="org-avatar-wrap">
+                        <img src="./images/profile_avatar.jpg" class="org-avatar" alt="Projects">
+                      </div>
+                      <div class="org-card-content">
+                        <div class="org-name">Name Placeholder</div>
+                        <div class="org-role">Projects</div>
+                        <div class="org-exp">
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          Years of Exp
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2762,7 +3300,111 @@
     </div>
   </div>
 
+  <!-- Organization Structure Config File -->
+  <script src="./org-config.js"></script>
+
   <script>
+    // Dynamically render Organization Chart from org-config.js
+    function renderOrgChart() {
+      const container = document.getElementById('orgTree');
+      if (!container || typeof orgConfig === 'undefined') return;
+
+      const md = orgConfig.managingDirector;
+      const vp = orgConfig.vicePresident;
+      const depts = orgConfig.departments || [];
+
+      let html = `
+        <!-- Level 1: Managing Director -->
+        <div class="org-node">
+          <div class="org-card primary-leader">
+            <div class="org-avatar-wrap">
+              <img src="${md.photo || './images/profile_avatar.jpg'}" class="org-avatar" alt="${md.role}">
+            </div>
+            <div class="org-name">${md.name}</div>
+            <div class="org-role">${md.role}</div>
+            <div class="org-exp">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ${md.experience}
+            </div>
+          </div>
+          <div class="org-line-v"></div>
+          
+          <!-- Level 2: Vice President -->
+          <div class="org-node">
+            <div class="org-card secondary-leader">
+              <div class="org-avatar-wrap">
+                <img src="${vp.photo || './images/profile_avatar.jpg'}" class="org-avatar" alt="${vp.role}">
+              </div>
+              <div class="org-name">${vp.name}</div>
+              <div class="org-role">${vp.role}</div>
+              <div class="org-exp">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                ${vp.experience}
+              </div>
+            </div>
+            <div class="org-line-v"></div>
+            
+            <!-- Level 3: Department Managers -->
+            <div class="org-branches">
+      `;
+
+      depts.forEach(dept => {
+        const mgr = dept.manager;
+        html += `
+          <div class="org-branch">
+            <div class="org-card manager-card">
+              <div class="org-avatar-wrap">
+                <img src="${mgr.photo || './images/profile_avatar.jpg'}" class="org-avatar" alt="${mgr.role}">
+              </div>
+              <div class="org-name">${mgr.name}</div>
+              <div class="org-role">${mgr.role}</div>
+              <div class="org-exp">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                ${mgr.experience}
+              </div>
+            </div>
+            <div class="org-line-v"></div>
+            <div class="org-sub-nodes">
+        `;
+
+        (dept.subNodes || []).forEach(sub => {
+          html += `
+            <div class="org-card sub-card">
+              <div class="org-avatar-wrap">
+                <img src="${sub.photo || './images/profile_avatar.jpg'}" class="org-avatar" alt="${sub.role}">
+              </div>
+              <div class="org-card-content">
+                <div class="org-name">${sub.name}</div>
+                <div class="org-role">${sub.role}</div>
+                <div class="org-exp">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  ${sub.experience}
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      html += `
+            </div>
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', renderOrgChart);
+    } else {
+      renderOrgChart();
+    }
     // Mobile Navigation Drawer Toggle
     function toggleMobileMenu() {
       const drawer = document.getElementById('mobileDrawer');
@@ -2833,6 +3475,54 @@
       alert('Thank you! Your RFP quote request has been transmitted to marketing@granstech.com. Our technical sales team will reply within 24 hours.');
       closeQuoteModal();
     }
+
+    // PDF Export — uses browser's built-in Save as PDF (Ctrl+P)
+    // Works on any URL: file://, localhost, or deployed domain.
+    // All styling is handled by @media print in the CSS above.
+    function downloadPortfolioPdf() {
+      const prev = document.title;
+      document.title = 'GransTech-Steel-Foundry-Portfolio';
+      window.print();
+      // Restore title after dialog closes
+      setTimeout(() => { document.title = prev; }, 1000);
+    }
   </script>
+
+</body>
+</html>
+
+      }
+    }
+  </script>
+
+  <!-- PDF Loading Overlay -->
+  <div id="pdfLoadingOverlay" style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(23, 20, 15, 0.82);
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  ">
+    <div style="
+      width: 64px; height: 64px;
+      border: 4px solid rgba(255,255,255,0.15);
+      border-top-color: #e64a19;
+      border-radius: 50%;
+      animation: pdfSpin 0.9s linear infinite;
+    "></div>
+    <div style="text-align: center;">
+      <div style="font-family: 'Oswald', sans-serif; font-size: 1.4rem; color: #ffffff; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">Generating PDF</div>
+      <div id="pdfLoadingMsg" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: #c8c3b8; letter-spacing: 0.04em;">Capturing page content...</div>
+    </div>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: #7a7466;">This may take 15–30 seconds</div>
+  </div>
+  <style>
+    @keyframes pdfSpin { to { transform: rotate(360deg); } }
+  </style>
 </body>
 </html>
