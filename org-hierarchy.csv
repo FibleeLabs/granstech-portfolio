@@ -1,0 +1,21 @@
+ID,Name,Role,Reports_To,Department,Experience,Photo_URL,Order
+1,Gopinath,Managing Director,,Executive Leadership,Years of Exp,./images/profile_avatar.jpg,1
+2,Name Placeholder,Vice President,1,Executive Leadership,Years of Exp,./images/profile_avatar.jpg,1
+3,Name Placeholder,Production Manager,2,Production,Years of Exp,./images/profile_avatar.jpg,1
+31,Name Placeholder,Pre Production,3,Production,Years of Exp,./images/profile_avatar.jpg,1
+32,Name Placeholder,Post Production,3,Production,Years of Exp,./images/profile_avatar.jpg,2
+4,Name Placeholder,Quality Manager,2,Quality,Years of Exp,./images/profile_avatar.jpg,2
+41,Name Placeholder,QA,4,Quality,Years of Exp,./images/profile_avatar.jpg,1
+42,Name Placeholder,QC,4,Quality,Years of Exp,./images/profile_avatar.jpg,2
+5,Name Placeholder,Sales / Marketing Manager,2,Sales & Marketing,Years of Exp,./images/profile_avatar.jpg,3
+51,Name Placeholder,Sales Manager,5,Sales & Marketing,Years of Exp,./images/profile_avatar.jpg,1
+52,Name Placeholder,Marketing Manager,5,Sales & Marketing,Years of Exp,./images/profile_avatar.jpg,2
+6,Name Placeholder,Factory Manager,2,Plant Operations,Years of Exp,./images/profile_avatar.jpg,4
+61,Name Placeholder,HR & Admin,6,Plant Operations,Years of Exp,./images/profile_avatar.jpg,1
+62,Name Placeholder,Security & Safety,6,Plant Operations,Years of Exp,./images/profile_avatar.jpg,2
+7,Name Placeholder,Purchase & Accounts Officer,2,Purchase & Accounts,Years of Exp,./images/profile_avatar.jpg,5
+71,Name Placeholder,Stores,7,Purchase & Accounts,Years of Exp,./images/profile_avatar.jpg,1
+72,Name Placeholder,Accounts,7,Purchase & Accounts,Years of Exp,./images/profile_avatar.jpg,2
+8,Name Placeholder,Maintenance / Projects Manager,2,Maintenance & Projects,Years of Exp,./images/profile_avatar.jpg,6
+81,Name Placeholder,Maintenance,8,Maintenance & Projects,Years of Exp,./images/profile_avatar.jpg,1
+82,Name Placeholder,Projects,8,Maintenance & Projects,Years of Exp,./images/profile_avatar.jpg,2
