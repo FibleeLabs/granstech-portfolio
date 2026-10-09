@@ -1,0 +1,52 @@
+# GransTech static site (Apache / LiteSpeed hosting, e.g. cPanel)
+
+ErrorDocument 404 /404.html
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS and the bare domain (granstech.com) as the canonical host
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^(.*)$ https://granstech.com/$1 [R=301,L]
+
+  # Keep build sources out of the public site
+  RewriteRule ^(src|tools|images)(/|$) - [F,L]
+
+  # 301 redirects from the previous WordPress URLs so search rankings carry over
+  # (NE keeps the #section fragment intact)
+  RewriteRule ^facility/melting-facility/?$ /facility/#melting [R=301,NE,L]
+  RewriteRule ^facility/heat-treatment-furnace-facility/?$ /facility/#heat-treatment [R=301,NE,L]
+  RewriteRule ^facility/core-and-mould-making/?$ /facility/#moulding [R=301,NE,L]
+  RewriteRule ^facility/(shot-blasting|fettling)-facility/?$ /facility/#fettling [R=301,NE,L]
+  RewriteRule ^category_project/ /facility/ [R=301,L]
+  RewriteRule ^products/valve /products/#valves [R=301,NE,L]
+  RewriteRule ^products/(steel-castings|page/) /products/ [R=301,L]
+  RewriteRule ^process/?$ /facility/#process-flow [R=301,NE,L]
+  RewriteRule ^faqs?/?$ /about-us/#faq [R=301,NE,L]
+  RewriteRule ^wp-(admin|login\.php|content/uploads/) / [R=301,L]
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType application/pdf "access plus 30 days"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json text/plain application/xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>

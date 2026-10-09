@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /tools/
+Disallow: /images/
+
+Sitemap: https://granstech.com/sitemap.xml
